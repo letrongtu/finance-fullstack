@@ -29,6 +29,7 @@ import {
 
 import { Trash } from "lucide-react";
 import { useConfirm } from "@/hooks/use-confirm";
+import { cn } from "@/lib/utils";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -208,6 +209,11 @@ export function DataTable<TData, TValue>({
           size="sm"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
+          className={cn(
+            table.getCanPreviousPage()
+              ? "bg-blue-600 text-white"
+              : ""
+          )}
         >
           Previous
         </Button>
@@ -216,6 +222,11 @@ export function DataTable<TData, TValue>({
           size="sm"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
+          className={cn(
+            table.getCanNextPage()
+              ? "bg-blue-600 text-white"
+              : ""
+          )}
         >
           Next
         </Button>

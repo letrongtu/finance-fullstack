@@ -49,7 +49,7 @@ const app = new Hono()
       }
 
       const defaultTo = new Date();
-      const defaultFrom = subDays(defaultTo, 30);
+      const defaultFrom = subDays(defaultTo, 365);
 
       const startDate = from
         ? parse(from, "yyyy-MM-dd", new Date())
@@ -68,13 +68,13 @@ const app = new Hono()
           payee: transactions.payee,
           amount: transactions.amount,
           notes: transactions.notes,
-          account: accounts,
-          accountId: transactions.accountsId,
+          account: accounts.name,
+          accountId: transactions.accountId,
         })
         .from(transactions)
         .innerJoin(
           accounts,
-          eq(transactions.accountsId, accounts.id)
+          eq(transactions.accountId, accounts.id)
         )
         .leftJoin(
           categories,
@@ -87,7 +87,7 @@ const app = new Hono()
           and(
             accountId
               ? eq(
-                  transactions.accountsId,
+                  transactions.accountId,
                   accountId
                 )
               : undefined,
@@ -135,12 +135,13 @@ const app = new Hono()
           payee: transactions.payee,
           amount: transactions.amount,
           notes: transactions.notes,
-          accountId: transactions.accountsId,
+          accountId: transactions.accountId,
+          categoryId: transactions.categoryId,
         })
         .from(transactions)
         .innerJoin(
           accounts,
-          eq(transactions.accountsId, accounts.id)
+          eq(transactions.accountId, accounts.id)
         )
         .where(
           and(
@@ -250,7 +251,7 @@ const app = new Hono()
             .innerJoin(
               accounts,
               eq(
-                transactions.accountsId,
+                transactions.accountId,
                 accounts.id
               )
             )
@@ -322,7 +323,7 @@ const app = new Hono()
             .innerJoin(
               accounts,
               eq(
-                transactions.accountsId,
+                transactions.accountId,
                 accounts.id
               )
             )
@@ -393,7 +394,7 @@ const app = new Hono()
             .innerJoin(
               accounts,
               eq(
-                transactions.accountsId,
+                transactions.accountId,
                 accounts.id
               )
             )

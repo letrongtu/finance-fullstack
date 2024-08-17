@@ -17,7 +17,9 @@ type RequestType = InferRequestType<
   (typeof client.api.transactions)[":id"]["$patch"]
 >["json"];
 
-export const useEditAccount = (id?: string) => {
+export const useEditTransaction = (
+  id?: string
+) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation<
