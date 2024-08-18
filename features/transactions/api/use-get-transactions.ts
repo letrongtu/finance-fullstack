@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { client } from "@/lib/hono";
+import { client } from "@/features/hono";
 import { useSearchParams } from "next/navigation";
 import { convertAmountFromMiliunits } from "@/lib/utils";
 

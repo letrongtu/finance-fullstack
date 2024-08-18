@@ -1,7 +1,7 @@
 "use client";
 import { InferResponseType } from "hono";
 
-import { client } from "@/lib/hono";
+import { client } from "@/features/hono";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";

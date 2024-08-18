@@ -8,7 +8,7 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 
-import { client } from "@/lib/hono";
+import { client } from "@/features/hono";
 
 type ResponeType = InferResponseType<
   typeof client.api.transactions.$post
