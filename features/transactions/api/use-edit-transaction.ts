@@ -42,7 +42,9 @@ export const useEditTransaction = (
       queryClient.invalidateQueries({
         queryKey: ["transactions"],
       });
-      // TODO: Invalidate summary
+      queryClient.invalidateQueries({
+        queryKey: ["summary"],
+      });
     },
     onError: () => {
       toast.error(
